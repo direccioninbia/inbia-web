@@ -673,8 +673,8 @@ footer {
 /* Enhanced Footer */
 footer {
   padding: 50px 0 30px;
-  background-color: var(--bg-dark);
-  /* Ensure explicit dark bg */
+  background-color: var(--primary);
+  /* Deep Navy */
 }
 
 .footer-content {

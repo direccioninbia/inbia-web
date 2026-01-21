@@ -702,6 +702,8 @@ footer {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  text-decoration: none;
+  /* Remove underline */
 }
 
 .footer-socials a:hover {

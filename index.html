@@ -538,15 +538,23 @@
         </div>
     </section>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/573118407630" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Floating FAQ Button -->
-    <button id="faq-btn" class="faq-floating-btn" aria-label="Preguntas Frecuentes">
-        <span class="faq-icon">?</span>
-    </button>
+    <!-- Unified Support Widget -->
+    <div class="support-widget" id="support-widget">
+        <div class="support-options">
+            <a href="https://wa.me/573118407630" class="support-opt whatsapp" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+                <span>Chatea con nosotros</span>
+            </a>
+            <button id="faq-btn" class="support-opt faq" title="Preguntas Frecuentes">
+                <i class="fas fa-question"></i>
+                <span>Preguntas Frecuentes</span>
+            </button>
+        </div>
+        <button class="support-main-btn" id="support-main-btn" aria-label="Soporte y Contacto">
+            <i class="fas fa-headset"></i>
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
 
     <!-- FAQ Modal -->
     <div id="faq-modal" class="faq-modal">

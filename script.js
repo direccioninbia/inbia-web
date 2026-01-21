@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
     // Toggle FAQ items
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
@@ -141,6 +142,24 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.toggle('active');
         });
     });
+
+    // Support Widget Toggle
+    const supportWidget = document.getElementById('support-widget');
+    const supportMainBtn = document.getElementById('support-main-btn');
+
+    if (supportMainBtn) {
+        supportMainBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            supportWidget.classList.toggle('active');
+        });
+
+        // Close widget when clicking outside
+        document.addEventListener('click', (e) => {
+            if (supportWidget.classList.contains('active') && !supportWidget.contains(e.target)) {
+                supportWidget.classList.remove('active');
+            }
+        });
+    }
 
     // Contact Form Submission to Google Sheets
     const contactForm = document.getElementById('contact-form');

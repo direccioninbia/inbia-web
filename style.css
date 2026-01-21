@@ -1,8 +1,10 @@
 :root {
   /* Dynamic Color Palette - Professional & Educational */
-  --primary: #0f172a; /* Deep Navy */
+  --primary: #0f172a;
+  /* Deep Navy */
   --primary-light: #1e293b;
-  --accent: #f59e0b; /* Golden Yellow */
+  --accent: #f59e0b;
+  /* Golden Yellow */
   --accent-hover: #d97706;
   --text-main: #334155;
   --text-light: #64748b;
@@ -497,39 +499,7 @@ header .container {
   color: var(--primary);
 }
 
-/* WhatsApp Floating */
-.whatsapp-float {
-  position: fixed;
-  bottom: 100px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  background-color: #25d366;
-  color: white;
-  border-radius: 50%;
-  text-align: center;
-  font-size: 30px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.whatsapp-float:hover {
-  background-color: #128c7e;
-  transform: scale(1.1);
-}
-
-.success-message {
-  display: none;
-  text-align: center;
-  padding: 20px;
-  color: #10b981;
-  font-weight: 600;
-}
+/* WhatsApp Floating styles removed in favor of Unified Support Widget */
 
 /* Courses Section */
 .courses {
@@ -716,34 +686,117 @@ footer {
 
 
 
-/* Floating FAQ Button */
-.faq-floating-btn {
+/* Unified Support Floating Button */
+.support-widget {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 60px;
-  height: 60px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.support-main-btn {
+  width: 65px;
+  height: 65px;
   background: var(--accent);
+  color: var(--primary);
   border: none;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
   cursor: pointer;
-  z-index: 999;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.8rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
-.faq-floating-btn:hover {
-  transform: scale(1.1);
+.support-main-btn:hover {
+  transform: scale(1.1) rotate(5deg);
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
 }
 
-.faq-icon {
-  color: var(--primary);
-  font-size: 2rem;
-  font-weight: 700;
+.support-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: var(--transition);
+}
+
+.support-widget.active .support-options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.support-opt {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  position: relative;
+  border: none;
+  cursor: pointer;
+}
+
+.support-opt span {
+  position: absolute;
+  right: 70px;
+  background: var(--primary);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.support-opt:hover span {
+  opacity: 1;
+  visibility: visible;
+  right: 60px;
+}
+
+.support-opt.whatsapp {
+  background: #25d366;
+}
+
+.support-opt.faq {
+  background: #3b82f6;
+}
+
+.support-opt:hover {
+  transform: scale(1.1);
+}
+
+.support-main-btn .fa-times {
+  display: none;
+}
+
+.support-widget.active .support-main-btn .fa-headset {
+  display: none;
+}
+
+.support-widget.active .support-main-btn .fa-times {
+  display: inline-block;
 }
 
 /* FAQ Modal */

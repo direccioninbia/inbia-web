@@ -1,10 +1,8 @@
 :root {
   /* Dynamic Color Palette - Professional & Educational */
-  --primary: #0f172a;
-  /* Deep Navy */
+  --primary: #0f172a; /* Deep Navy */
   --primary-light: #1e293b;
-  --accent: #f59e0b;
-  /* Golden Yellow */
+  --accent: #f59e0b; /* Golden Yellow */
   --accent-hover: #d97706;
   --text-main: #334155;
   --text-light: #64748b;
@@ -12,6 +10,8 @@
   --bg-light: #f8fafc;
   --bg-white: #ffffff;
   --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --header-bg: rgba(15, 23, 42, 0.95);
 
   /* Font Family */
   --font-main: 'Outfit', sans-serif;
@@ -19,6 +19,25 @@
   /* Spacing */
   --container-width: 1200px;
   --header-height: 80px;
+
+  /* Transitions */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --primary: #f8fafc;
+  --primary-light: #e2e8f0;
+  --accent: #fbbf24;
+  --accent-hover: #f59e0b;
+  --text-main: #e2e8f0;
+  --text-light: #94a3b8;
+  --text-white: #f8fafc;
+  --bg-light: #0f172a;
+  --bg-white: #020617;
+  --border-color: #1e293b;
+  --card-bg: #1e293b;
+  --header-bg: rgba(2, 6, 23, 0.95);
 }
 
 * {
@@ -82,7 +101,7 @@ body {
 /* Header */
 header {
   height: var(--header-height);
-  background-color: rgba(15, 23, 42, 0.95);
+  background-color: var(--header-bg);
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
@@ -91,7 +110,8 @@ header {
   z-index: 1000;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
 header .container {
@@ -158,8 +178,25 @@ header .container {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: var(--text-white);
+  background-color: var(--primary);
   transition: all 0.3s ease;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
 }
 
 /* Hero Section */
@@ -303,6 +340,195 @@ header .container {
 
 .service-card p {
   color: var(--text-light);
+}
+
+/* Placement Test Section */
+.placement-test {
+  padding: 100px 0;
+  background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+}
+
+.placement-test h2 {
+  color: white;
+}
+
+.placement-test-card {
+  max-width: 800px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Team Section */
+.team {
+  padding: 100px 0;
+  background-color: var(--bg-white);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.team-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+}
+
+.team-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.team-card h3 {
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.team-card span {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Testimonials Section */
+.testimonials {
+  padding: 100px 0;
+  background-color: var(--bg-light);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.testimonial-card i {
+  font-size: 2rem;
+  color: var(--accent);
+  opacity: 0.2;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.testimonial-user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.testimonial-user img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-info h4 {
+  color: var(--primary);
+}
+
+/* Blog Section */
+.blog {
+  padding: 100px 0;
+  background-color: var(--bg-white);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.blog-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.blog-img {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.blog-content {
+  padding: 25px;
+}
+
+.blog-date {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.blog-content h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+/* WhatsApp Floating */
+.whatsapp-float {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+  background-color: #128c7e;
+  transform: scale(1.1);
+}
+
+.success-message {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  color: #10b981;
+  font-weight: 600;
 }
 
 /* Courses Section */

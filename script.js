@@ -19,6 +19,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+
+    // Check for saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'dark') {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+    });
+
     // Smooth Scrolling for anchor links (fallback for browsers that don't support scroll-behavior: smooth)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -69,16 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Select elements to animate (we can add a class .fade-in to elements we want to animate)
-    // For now, let's animate the service cards and course cards
-    const cards = document.querySelectorAll('.service-card, .course-card');
-    cards.forEach((card, index) => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(30px)";
-        card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-        // Stagger delay
-        card.style.transitionDelay = `${index * 100}ms`;
-        observer.observe(card);
+    // Select elements to animate
+    const animateElements = document.querySelectorAll('.service-card, .course-card, .team-card, .testimonial-card, .blog-card, .placement-test-card');
+    animateElements.forEach((el, index) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(el);
     });
 
     // FAQ Modal Functionality
@@ -139,10 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: new FormData(contactForm)
             })
                 .then(response => {
-                    // Determine if the request was successful
-                    // Note: Google Scripts might return opaque response with no-cors or JSON
-                    // We'll assume success if no error is caught for simple implementations
-                    alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
+                    contactForm.style.display = 'none';
+                    document.getElementById('form-success').style.display = 'block';
                     contactForm.reset();
                 })
                 .catch(error => {

@@ -1,0 +1,12 @@
+# robots.txt para INBIA Academy
+# https://inbiaacademy.com/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://inbiaacademy.com/sitemap.xml
+
+# Disallow any admin or private directories (if applicable)
+# Disallow: /admin/
+# Disallow: /private/

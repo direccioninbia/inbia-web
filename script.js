@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     const links = document.querySelectorAll('.nav-links a');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby4KDpVIZxb7_P1trC9PEitG3daPSHYbMQAw7bPoiaiQc0KlmyNBkN1V9jbu1cc9F0o5g/exec';
 
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
@@ -226,10 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Contact Form Submission to Google Sheets
     const contactForm = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxnmTyZcHSpQNXrAS8Ia5oVMuKQWlAT_lgfQ1g38xWl7dI5Rqp0erTNIm45cmZ95U6QAQ/exec';
 
     if (contactForm) {
         contactForm.addEventListener('submit', e => {

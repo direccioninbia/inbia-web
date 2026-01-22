@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     const links = document.querySelectorAll('.nav-links a');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby4KDpVIZxb7_P1trC9PEitG3daPSHYbMQAw7bPoiaiQc0KlmyNBkN1V9jbu1cc9F0o5g/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzeLpoCbH8ksbJ70ZGfGD7-SZJNqMGrZh0PR0tfj5nsyLSWTNl3soW4HSxscjSFt3rPrA/exec';
 
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
@@ -172,12 +172,17 @@ document.addEventListener('DOMContentLoaded', () => {
             pqrsSubmitBtn.innerText = 'Enviando...';
             pqrsSubmitBtn.disabled = true;
 
+            // Send data as URLSearchParams for better compatibility with Google Apps Script
             fetch(scriptURL, {
                 method: 'POST',
                 mode: 'no-cors',
-                body: new FormData(pqrsForm)
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(new FormData(pqrsForm)).toString()
             })
-                .then(response => {
+                .then(() => {
+                    // With no-cors, we assume success as we can't read the response
                     pqrsForm.style.display = 'none';
                     document.getElementById('pqrs-success').style.display = 'block';
                     pqrsForm.reset();
@@ -239,12 +244,17 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerText = 'Enviando...';
             submitBtn.disabled = true;
 
+            // Send data as URLSearchParams for better compatibility with Google Apps Script
             fetch(scriptURL, {
                 method: 'POST',
                 mode: 'no-cors',
-                body: new FormData(contactForm)
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(new FormData(contactForm)).toString()
             })
-                .then(response => {
+                .then(() => {
+                    // With no-cors, we assume success
                     contactForm.style.display = 'none';
                     document.getElementById('form-success').style.display = 'block';
                     contactForm.reset();

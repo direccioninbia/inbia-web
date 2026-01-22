@@ -30,6 +30,7 @@
 
   /* Transitions */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --top-bar-height: 35px;
 }
 
 /* Dark Mode Variables */
@@ -107,14 +108,57 @@ body {
   color: var(--primary);
 }
 
-/* Header */
+/* Top Header Bar */
+.top-header {
+  background-color: var(--primary-light);
+  color: var(--text-white);
+  padding: 8px 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.top-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-contact a {
+  color: var(--text-white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.top-contact a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.top-utilities {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Header Adjustments for Top Bar */
 header {
   height: var(--header-height);
   background-color: var(--header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   position: fixed;
-  top: 0;
+  top: 35px;
+  /* Height of top bar approx */
   left: 0;
   width: 100%;
   z-index: 1000;
@@ -144,6 +188,14 @@ header .container {
 header nav {
   display: flex;
   align-items: center;
+  gap: 20px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 20px;
 }
 
 .logo span {
@@ -219,6 +271,60 @@ header nav {
   border-color: var(--accent);
 }
 
+/* Language Selector */
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+}
+
+.lang-selector:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.lang-selector span {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: var(--transition);
+}
+
+.lang-selector span:hover {
+  opacity: 1;
+}
+
+.lang-selector span.active {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.lang-divider {
+  opacity: 0.3 !important;
+  cursor: default !important;
+}
+
+/* Hide Google Translate Bar */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.goog-te-menu-value {
+  display: none !important;
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
@@ -230,7 +336,7 @@ header nav {
   display: flex;
   align-items: center;
   color: var(--text-white);
-  padding-top: var(--header-height);
+  padding-top: calc(var(--header-height) + var(--top-bar-height));
   position: relative;
   overflow: hidden;
 }
@@ -1140,7 +1246,7 @@ footer {
 
   .nav-links {
     position: fixed;
-    top: var(--header-height);
+    top: calc(var(--header-height) + var(--top-bar-height));
     left: 0;
     width: 100%;
     background-color: var(--header-bg);

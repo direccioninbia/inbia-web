@@ -270,3 +270,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Translation Functionality
+function changeLanguage(lang) {
+    const translateCombo = document.querySelector('.goog-te-combo');
+    if (!translateCombo) {
+        alert("El traductor todavía se está cargando, por favor intenta de nuevo en un segundo.");
+        return;
+    }
+
+    translateCombo.value = lang;
+    translateCombo.dispatchEvent(new Event('change'));
+
+    // Update UI
+    const langSpans = document.querySelectorAll('.lang-selector span');
+    langSpans.forEach(span => {
+        if (span.innerText.toLowerCase() === lang) {
+            span.classList.add('active');
+        } else if (span.innerText !== '|') {
+            span.classList.remove('active');
+        }
+    });
+}

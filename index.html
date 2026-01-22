@@ -192,6 +192,24 @@
 
 <body>
 
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-content">
+                <div class="top-contact">
+                    <a href="tel:+573118407630"><i class="fas fa-phone"></i> +57 311 840 7630</a>
+                </div>
+                <div class="top-utilities">
+                    <div class="lang-selector">
+                        <span class="active" onclick="changeLanguage('es')">ES</span>
+                        <span class="lang-divider">|</span>
+                        <span onclick="changeLanguage('en')">EN</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <div class="container">
@@ -204,16 +222,16 @@
                     <li><a href="#methodology">Metodología</a></li>
                     <li><a href="#courses">Cursos</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                    <li>
-                        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
                 </ul>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -776,6 +794,21 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <!-- Google Translate (Hidden) -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,es',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 
 </html>

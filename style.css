@@ -141,6 +141,11 @@ header .container {
   gap: 10px;
 }
 
+header nav {
+  display: flex;
+  align-items: center;
+}
+
 .logo span {
   color: var(--accent);
 }
@@ -188,7 +193,7 @@ header .container {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: var(--primary);
+  background-color: var(--text-white);
   transition: all 0.3s ease;
 }
 

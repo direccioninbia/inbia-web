@@ -692,6 +692,16 @@ header nav {
   color: var(--dark-navy);
 }
 
+.success-message {
+  display: none;
+  margin-top: 20px;
+  color: #2ecc71;
+  /* Vibrant green */
+  text-align: center;
+  font-weight: 700;
+  animation: fadeUp 0.4s ease forwards;
+}
+
 /* Footer */
 footer {
   background-color: var(--primary);

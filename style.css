@@ -111,7 +111,8 @@ body {
 header {
   height: var(--header-height);
   background-color: var(--header-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: fixed;
   top: 0;
   left: 0;
@@ -119,7 +120,7 @@ header {
   z-index: 1000;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: var(--transition);
 }
 
@@ -193,19 +194,24 @@ header .container {
 
 /* Theme Toggle */
 .theme-toggle {
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--text-white);
-  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.1rem;
   cursor: pointer;
-  margin-left: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: var(--transition);
 }
 
 .theme-toggle:hover {
-  color: var(--accent);
+  background: var(--accent);
+  color: var(--dark-navy);
+  border-color: var(--accent);
 }
 
 /* Hero Section */
@@ -1122,18 +1128,60 @@ footer {
     left: 0;
     width: 100%;
     background-color: var(--header-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     flex-direction: column;
-    padding: 30px;
-    gap: 20px;
+    padding: 40px 20px;
+    gap: 25px;
     transform: translateY(-150%);
-    transition: transform 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid var(--border-color);
-    align-items: flex-end;
-    /* Align items to the right */
+    align-items: center;
+    text-align: center;
+  }
+
+  .nav-links li {
+    width: 100%;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Delay each link appearance */
+  .nav-links.active li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .nav-links.active li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  .nav-links.active li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  .nav-links.active li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+
+  .nav-links.active li:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+
+  .nav-links li:last-child {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
   }
 
   .nav-links.active {
     transform: translateY(0);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   }
 
   .hero h1 {

@@ -71,10 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
-            header.style.backgroundColor = "rgba(15, 23, 42, 0.98)";
+            header.style.backgroundColor = "var(--header-bg)";
         } else {
             header.style.boxShadow = "none";
-            header.style.backgroundColor = "rgba(15, 23, 42, 0.95)";
+            header.style.backgroundColor = "var(--header-bg)";
         }
     });
 
@@ -110,22 +110,87 @@ document.addEventListener('DOMContentLoaded', () => {
     const faqClose = document.getElementById('faq-close');
     const faqItems = document.querySelectorAll('.faq-item');
 
+    // PQRS Modal Functionality
+    const pqrsBtn = document.getElementById('pqrs-btn');
+    const pqrsModal = document.getElementById('pqrs-modal');
+    const pqrsClose = document.getElementById('pqrs-close');
+    const footerPqrsLink = document.getElementById('footer-pqrs-link');
+    const pqrsForm = document.getElementById('pqrs-form');
+    const pqrsSubmitBtn = document.getElementById('pqrs-submit-btn');
+
     // Open FAQ modal
-    faqBtn.addEventListener('click', () => {
-        faqModal.classList.add('active');
-    });
+    if (faqBtn) {
+        faqBtn.addEventListener('click', () => {
+            faqModal.classList.add('active');
+        });
+    }
 
-    // Close FAQ modal
-    faqClose.addEventListener('click', () => {
-        faqModal.classList.remove('active');
-    });
+    // Open PQRS modal
+    if (pqrsBtn) {
+        pqrsBtn.addEventListener('click', () => {
+            pqrsModal.classList.add('active');
+        });
+    }
 
-    // Close modal when clicking outside
-    faqModal.addEventListener('click', (e) => {
+    if (footerPqrsLink) {
+        footerPqrsLink.addEventListener('click', () => {
+            pqrsModal.classList.add('active');
+        });
+    }
+
+    // Close Modals
+    if (faqClose) {
+        faqClose.addEventListener('click', () => {
+            faqModal.classList.remove('active');
+        });
+    }
+
+    if (pqrsClose) {
+        pqrsClose.addEventListener('click', () => {
+            pqrsModal.classList.remove('active');
+        });
+    }
+
+    // Close modals when clicking outside
+    window.addEventListener('click', (e) => {
         if (e.target === faqModal) {
             faqModal.classList.remove('active');
         }
+        if (e.target === pqrsModal) {
+            pqrsModal.classList.remove('active');
+        }
     });
+
+    // PQRS Form Submission
+    if (pqrsForm) {
+        pqrsForm.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // Visual feedback
+            const originalBtnText = pqrsSubmitBtn.innerText;
+            pqrsSubmitBtn.innerText = 'Enviando...';
+            pqrsSubmitBtn.disabled = true;
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: new FormData(pqrsForm)
+            })
+                .then(response => {
+                    pqrsForm.style.display = 'none';
+                    document.getElementById('pqrs-success').style.display = 'block';
+                    pqrsForm.reset();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Hubo un error al enviar tu solicitud. Por favor intenta contactarnos por WhatsApp.');
+                })
+                .finally(() => {
+                    pqrsSubmitBtn.innerText = originalBtnText;
+                    pqrsSubmitBtn.disabled = false;
+                });
+        });
+    }
 
 
     // Toggle FAQ items

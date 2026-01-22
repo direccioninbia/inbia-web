@@ -1188,31 +1188,48 @@ footer {
     font-size: 2.5rem;
   }
 
-  .courses-grid {
+  .services-grid,
+  .courses-grid,
+  .team-grid,
+  .testimonials-grid,
+  .blog-grid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 20px;
-    padding: 10px 0 20px;
+    padding: 15px 0 25px;
     margin: 0 -20px;
     padding-left: 20px;
     padding-right: 20px;
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE/Edge */
   }
 
-  .courses-grid::-webkit-scrollbar {
+  .services-grid::-webkit-scrollbar,
+  .courses-grid::-webkit-scrollbar,
+  .team-grid::-webkit-scrollbar,
+  .testimonials-grid::-webkit-scrollbar,
+  .blog-grid::-webkit-scrollbar {
     display: none;
-    /* Chrome/Safari/Opera */
   }
 
-  .course-card {
+  .service-card,
+  .course-card,
+  .team-card,
+  .testimonial-card,
+  .blog-card {
     min-width: 280px;
     width: 85%;
     flex-shrink: 0;
     scroll-snap-align: center;
+    margin-bottom: 0 !important;
+  }
+
+  .testimonial-card,
+  .team-card {
+    width: 80%;
+    /* Slightly smaller for these cards */
+    min-width: 260px;
   }
 
   /* Mobile Adjustments for Support Widget */

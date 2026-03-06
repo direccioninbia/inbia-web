@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="comments.css">
 
     <!-- Breadcrumb Schema -->
     <script type="application/ld+json">
@@ -183,8 +184,36 @@
                 <p>Únete a nuestros cursos conversacionales en Yopal o en línea.</p>
                 <a href="https://wa.me/573118407630" class="btn btn-primary">Hablar con un asesor</a>
             </div>
+
         </article>
     </main>
+
+    <!-- Comments Section -->
+    <section class="comments-section" id="comments">
+        <h2 class="comments-header">Comentarios <span id="comments-count"></span></h2>
+
+        <!-- Post Comment Form -->
+        <div class="comment-form">
+            <h3>Deja una respuesta</h3>
+            <p style="color: var(--text-light); margin-bottom: 20px;">Tu dirección de correo no será publicada
+                (opcional). Los campos obligatorios están marcados.</p>
+            <form id="post-comment-form">
+                <div class="form-group">
+                    <input type="text" id="comment-name" placeholder="Tu Nombre *" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="comment-content" rows="4" placeholder="Escribe tu comentario aquí... *"
+                        required></textarea>
+                </div>
+                <button type="submit" class="comment-btn" id="submit-comment-btn">Publicar Comentario</button>
+            </form>
+        </div>
+
+        <!-- Comments List -->
+        <div class="comment-list" id="comments-list">
+            <!-- Comments will be loaded dynamically via Javascript here -->
+        </div>
+    </section>
 
     <!-- Unified Support Widget -->
     <div class="support-widget" id="support-widget">
@@ -241,7 +270,7 @@
                 <div class="footer-socials">
                     <a href="https://wa.me/573118407630" target="_blank" title="WhatsApp"><i
                             class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/inbia.academy?igsh=NzZ1YTI0dngxb3Az&utm_source=qr" class="social-icon" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 </div>
                 <p class="copyright">&copy; 2026 INBIA Academy. Todos los derechos reservados.</p>
@@ -250,6 +279,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="comments.js"></script>
 </body>
 
 </html>
